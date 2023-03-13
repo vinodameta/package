@@ -7,6 +7,21 @@
 		<version>2.5.0</version>
 		<relativePath />
 	</parent>
+
+
+
+
+        <distributionManagement>
+		<repository>
+		  <id>mvn-repo</id>
+		  <name>vinodameta</name>
+		  <url>https://maven.pkg.github.com/vinodameta/package</url>
+		</repository>
+	 </distributionManagement>
+
+
+
+
 	<groupId>pkg</groupId>
 	<artifactId>test</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
