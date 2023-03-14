@@ -65,7 +65,7 @@
         	<version>3.0.0-M4</version>
 		    <configuration>
                     <username>vinodameta</username>
-                    <password>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</password>
+                    <password>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</password>
               <checkModificationExcludes>
                 <checkModificationExclude>pom.xml</checkModificationExclude>
                  <checkModificationExclude>**</checkModificationExclude>
