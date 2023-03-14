@@ -27,22 +27,22 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-#    - name: Publish to GitHub Packages Apache Maven
-#      run: mvn deploy -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
-#        PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }} 
-        
-        
-    - name: Maven Release x GitHub Packages
-      run: |
-        git config --global user.name "vinodameta"
-        git config --global user.email "vinod.ameta@gmail.com"
-        mvn release:prepare 
-        mvn release:perform -s $GITHUB_WORKSPACE/settings.xml
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn deploy -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
-        PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}    
+        PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }} 
+        
+        
+#    - name: Maven Release x GitHub Packages
+#      run: |
+#        git config --global user.name "vinodameta"
+#        git config --global user.email "vinod.ameta@gmail.com"
+#        mvn release:prepare 
+#        mvn release:perform -s $GITHUB_WORKSPACE/settings.xml
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
+#        PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}    
         
