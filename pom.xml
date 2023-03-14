@@ -22,9 +22,17 @@
 
 
 
+
+
+
+
+
+
+
+
 	<groupId>pkg</groupId>
 	<artifactId>test</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>test</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
@@ -43,12 +51,26 @@
 		</dependency>
 	</dependencies>
 
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/vinodameta/package</developerConnection>
+      <tag>test-1.0.0</tag>
+  </scm>
+
 	<build>
 		<plugins>
 			<plugin>
         	<groupId>org.apache.maven.plugins</groupId>
         	<artifactId>maven-release-plugin</artifactId>
         	<version>3.0.0-M4</version>
+		    <configuration>
+                    <username>vinodameta</username>
+                    <password>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</password>
+              <checkModificationExcludes>
+                <checkModificationExclude>pom.xml</checkModificationExclude>
+                 <checkModificationExclude>**</checkModificationExclude>
+            </checkModificationExcludes>
+        </configuration>				
         	</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
