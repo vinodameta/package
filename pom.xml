@@ -53,7 +53,7 @@
 
 
     <scm>
-        <developerConnection>scm:git:https://github.com/vinodameta/package</developerConnection>
+        <developerConnection>scm:git:https://github.com/vinodameta/package.git</developerConnection>
   </scm>
 
 	<build>
