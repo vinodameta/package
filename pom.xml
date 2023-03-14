@@ -15,7 +15,7 @@
 		<repository>
 		  <id>mvn-repo</id>
 		  <name>vinodameta</name>
-		  <url>https://maven.pkg.github.com/vinodameta/package</url>
+		  <url>https://maven.pkg.github.com/vinodameta/package.git</url>
 		</repository>
 	 </distributionManagement>
 
