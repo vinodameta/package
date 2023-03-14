@@ -64,8 +64,6 @@
         	<artifactId>maven-release-plugin</artifactId>
         	<version>3.0.0-M4</version>
 		    <configuration>
-                    <username>vinodameta</username>
-                    <password>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</password>
               <checkModificationExcludes>
                 <checkModificationExclude>pom.xml</checkModificationExclude>
                  <checkModificationExclude>**</checkModificationExclude>
