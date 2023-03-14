@@ -42,7 +42,7 @@ jobs:
         mvn release:prepare 
         mvn release:perform -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}
         PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
         PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}    
         
