@@ -32,7 +32,7 @@
 
 	<groupId>pkg</groupId>
 	<artifactId>test</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>test</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
@@ -54,7 +54,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/vinodameta/package</developerConnection>
-    <tag>HEAD</tag>
+    <tag>test-1.0.2</tag>
   </scm>
 
 	<build>
