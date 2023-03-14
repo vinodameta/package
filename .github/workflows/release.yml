@@ -11,7 +11,9 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      actions: write
+      repository-projects: write
       packages: write
 
     steps:
@@ -45,4 +47,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}
         PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
         PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}    
+  
         
