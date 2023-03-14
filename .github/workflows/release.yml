@@ -41,7 +41,7 @@ jobs:
       run: |
         git config --global user.name "vinodameta"
         git config --global user.email "vinod.ameta@gmail.com"
-        mvn release:prepare 
+        mvn release:prepare  --batch-mode
         mvn release:perform -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
       env:
         GITHUB_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}
