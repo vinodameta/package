@@ -32,7 +32,7 @@
 
 	<groupId>pkg</groupId>
 	<artifactId>test</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>test</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
@@ -54,7 +54,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/vinodameta/package</developerConnection>
-    <tag>HEAD</tag>
   </scm>
 
 	<build>
@@ -64,8 +63,6 @@
         	<artifactId>maven-release-plugin</artifactId>
         	<version>3.0.0-M4</version>
 		    <configuration>
-                    <username>vinodameta</username>
-                    <password>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</password>
               <checkModificationExcludes>
                 <checkModificationExclude>pom.xml</checkModificationExclude>
                  <checkModificationExclude>**</checkModificationExclude>
