@@ -22,7 +22,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/vinodameta/package.git</developerConnection>
-      <tag>test-release-2.0.0</tag>
   </scm>
 
 
