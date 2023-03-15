@@ -34,20 +34,8 @@ jobs:
           git config user.name "vinodameta"
           
       - name: Publish JAR
-        run: ./mvnw -B release:prepare
+        run: mvn -B release:prepare release:perform
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
-         PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}           
-
-
-      - name: Maven Release x GitHub Packages
-        run: |
-          git config --global user.name "vinodameta"
-          git config --global user.email "vinod.ameta@gmail.com"
-          mvn release:prepare  --batch-mode
-          mvn release:perform -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
-        env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
-         PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}    
+         PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}            
