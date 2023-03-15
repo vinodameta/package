@@ -34,9 +34,9 @@ jobs:
           git config user.name "vinodameta"
           
       - name: Publish JAR
-        run: ./mvnw -B release:prepare release:perform
+        run: ./mvnw -B release:prepare
         env:
-         GITHUB_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
          PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}           
 
