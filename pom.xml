@@ -20,13 +20,13 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/vinodameta/package.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>test-release-1.1.1</tag>
   </scm>
 
 
 	<groupId>pkg</groupId>
 	<artifactId>test-release</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>1.1.1</version>
 	<name>test</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
