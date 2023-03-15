@@ -1,10 +1,16 @@
 name: release test
 
 on:
-  push:
-    branches: [ test ]
-  pull_request:
-    branches: [ test ]
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: "Default version to use when preparing a release."
+        required: true
+        default: "X.Y.Z"
+      developmentVersion:
+        description: "Default version to use for new local working copy."
+        required: true
+        default: "X.Y.Z-SNAPSHOT"
 
 jobs:
   build:
@@ -34,7 +40,7 @@ jobs:
           git config user.name "vinodameta"
           
       - name: Publish JAR
-        run: mvn -B release:prepare release:perform -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
+        run: mvn release:prepare release:perform -B -s $GITHUB_WORKSPACE/.github/workflows/settings.xml -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }}
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
