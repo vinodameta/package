@@ -1,6 +1,9 @@
 name: release test
 
 on:
+  push:
+    branches:
+      - test
   workflow_dispatch:
     inputs:
       releaseVersion:
