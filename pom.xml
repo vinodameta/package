@@ -28,7 +28,7 @@
 	<groupId>pkg</groupId>
 	<artifactId>test-release</artifactId>
 	<version>2.0.13-SNAPSHOT</version>
-	<name>test</name>
+	<name>licencing</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
 		<java.version>11</java.version>
