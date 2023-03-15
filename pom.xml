@@ -19,23 +19,19 @@
 </distributionManagement>
 
 
-
-<properties>
-  <project.scm.id>github</project.scm.id>  
-</properties>
-
     <scm>
         <developerConnection>scm:git:https://github.com/vinodameta/package.git</developerConnection>
     </scm>
 
 
 	<groupId>pkg</groupId>
-	<artifactId>test</artifactId>
+	<artifactId>test-release</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>test</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
 		<java.version>11</java.version>
+		 <project.scm.id>github</project.scm.id>  
 	</properties>
 	<dependencies>
 		<dependency>
