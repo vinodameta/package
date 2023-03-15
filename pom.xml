@@ -10,7 +10,6 @@
 
 
 
-
         <distributionManagement>
 		<repository>
 		  <id>mvn-repo</id>
