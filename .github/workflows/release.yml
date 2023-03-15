@@ -34,7 +34,7 @@ jobs:
           git config user.name "vinodameta"
           
       - name: Publish JAR
-        run: mvn -B release:prepare release:perform
+        run: mvn -B release:prepare release:perform -s $GITHUB_WORKSPACE/.github/workflows/settings.xml
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
