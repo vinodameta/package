@@ -6,7 +6,6 @@ on:
       - 'main'
 
   workflow_dispatch:
-  workflow_call:
     inputs:
       username:
         description: 'A username passed from the caller workflow'
