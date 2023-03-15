@@ -4,7 +4,7 @@
                               https://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
     <server>
-      <id>mvn-repo</id>
+      <id>github</id>
 			<username>${env.PACKAGESREAD_USERNAME}</username>
 			<password>${env.PACKAGESREAD_TOKEN}</password>
     </server>
