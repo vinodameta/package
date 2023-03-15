@@ -1,6 +1,11 @@
 name: test
+
 on:
-  workflow_call:
+  push:
+    branches:
+      - 'test'
+
+  workflow_dispatch:
     inputs:
       username:
         description: 'A username passed from the caller workflow'
