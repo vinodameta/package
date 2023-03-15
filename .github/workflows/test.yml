@@ -3,7 +3,7 @@ name: test
 on:
   push:
     branches:
-      - 'test'
+      - 'main'
 
   workflow_dispatch:
   workflow_call:
