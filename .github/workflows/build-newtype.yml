@@ -33,7 +33,7 @@ jobs:
           java-version: 15
 
       - name: Publish SNAPSHOT version to GitHub Packages
-        run: mvn -B --no-transfer-progress deploy -DskipTests --projects package
+        run: mvn -B -s $GITHUB_WORKSPACE/.github/workflows/settings.xml  --no-transfer-progress deploy -DskipTests --projects package
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
