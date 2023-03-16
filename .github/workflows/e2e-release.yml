@@ -1,5 +1,8 @@
 name: release-to-maven-with-packages
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       releaseversion:
@@ -36,6 +39,8 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
+          PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}           
         with:
           tag_name: ${{ github.event.inputs.releaseversion }}
           release_name: ${{ github.event.inputs.releaseversion }}
