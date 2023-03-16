@@ -33,6 +33,8 @@ jobs:
         uses: metcalfc/changelog-generator@v4.0.1
         with:
           myToken: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}       
+          
 
       - name: Create GitHub Release
         id: create_release
