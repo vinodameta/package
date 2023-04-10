@@ -27,7 +27,7 @@
 
 	<groupId>pkg</groupId>
 	<artifactId>licencing-release</artifactId>
-	<version>true</version>
+<!--	<version>true</version> -->
 	<name>licencing</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
