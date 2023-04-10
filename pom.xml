@@ -21,13 +21,12 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/vinodameta/package.git</developerConnection>
-    <tag>licencing-release-true</tag>
   </scm>
 
 
 	<groupId>pkg</groupId>
 	<artifactId>licencing-release</artifactId>
-<!--	<version>true</version> -->
+        <version>0.0.40-SNAPSHOT</version>
 	<name>licencing</name>
 	<description>Demo Spring Boot Project</description>
 	<properties>
