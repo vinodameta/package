@@ -1,61 +1,109 @@
-name: release-to-maven-with-packages
-on:
-  push:
-    branches:
-      - main
+name: Maven Release
+
   workflow_dispatch:
     inputs:
-      releaseversion:
-        description: 'Release version'
+      releaseVersion:
+        description: "Default version to use when preparing a release"
         required: true
-        default: '2.4.0'
+        default: "0.0.1"
+      developmentVersion:
+        description: "Default version to use for new local working copy"
+        required: true
+        default: "0.0.1-SNAPSHOT"
+
+
 jobs:
-  publish:
+  publish-release:
     runs-on: ubuntu-latest
+#    permissions:
+#      contents: write
+
     steps:
-      - run: echo "Will start a release  upload with version ${{ github.event.inputs.releaseversion }}"
+      - name: Checkout project
+        uses: actions/checkout@v2
 
-      - uses: actions/checkout@v3
-
+#Add maven cache to speed up build 
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+#Setup Java 11          
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
-          server-id: github
-          
-      - name: Set projects Maven version to GitHub Action GUI set version
-        run: mvn versions:set "-DnewVersion=${{ github.event.inputs.releaseversion }}" --no-transfer-progress
+          server-id: github-deploy
+          cache: 'maven'
 
+#Verify Input Env before release
+      - name: List all Input variable to verify 
+        run: |
+          echo "github username="${{ github.actor }}
+          echo "releaseVersion="${{ github.event.inputs.releaseVersion }}
+          echo "developmentVersion="${{ github.event.inputs.developmentVersion }}
+#Configure Git user
+      - name: Configure Git user
+        run: |
+          git config user.email "vinod.ameta@gmail.com"
+          git config user.name "vinodameta"         
+#Publish JAR with maven release
+      - name: Publish JAR
+        run: mvn release:prepare release:perform -B -s $GITHUB_WORKSPACE/.github/workflows/settings.xml -DreleaseVersion -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }}
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
+         PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}
+         GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
 
+#Generate changelog for release 
       - name: Generate changelog
         id: changelog
         uses: metcalfc/changelog-generator@v4.0.1
         with:
           myToken: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create GitHub Release
+
+#Update Changelog before release to track in CHANGELOG.md file in repo     
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: v${{ github.event.inputs.releaseversion }}
+          release-notes: | 
+           - Current Version = v${{ github.event.inputs.releaseversion }}
+           ### Added:
+           ### Changed: 
+            ${{ steps.changelog.outputs.changelog }} 
+           ### Deprecated:
+           ### Removed:
+           ### Fixed:
+           ### Security:
+#Create Release name and tag with given input in "releaseVersion", We can add more details in body with latest release changes.
+      - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PACKAGESREAD_USERNAME: ${{ secrets.PACKAGESREAD_USERNAME }}
-          PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}           
+          PACKAGESREAD_TOKEN: ${{ secrets.PACKAGESREAD_TOKEN }}
         with:
-          tag_name: ${{ github.event.inputs.releaseversion }}
-          release_name: ${{ github.event.inputs.releaseversion }}
-          body: |
-            Grab the new version from Maven central https://repo1.maven.org/maven2/de/codecentric/cxf-spring-boot-starter/${{ github.event.inputs.releaseversion }}/ by using it in your deps
-            ```
-            <dependencies>
-            	<dependency>
-            	    <groupId>de.codecentric</groupId>
-            	    <artifactId>package</artifactId>
-            	    <version>${{ github.event.inputs.releaseversion }}</version>
-            	</dependency>
-            </dependencies>
-            ```
-            ### Things that changed in this release
-            ${{ steps.changelog.outputs.changelog }}
-          draft: false
-          prerelease: false
+         tag_name: ${{ github.event.inputs.releaseversion }}
+         release_name: ${{ github.event.inputs.releaseversion }}
+         body: |
+           Changes in this Release:
+           - Download the new version of ath-licensing cli fat jar with v${{ github.event.inputs.releaseversion }} from https://github.com/Roche-DIA-RDS-CSI/ath-licensing/releases
+            ### List of changes in Licensing release v${{ github.event.inputs.releaseversion }}:
+            ${{ steps.changelog.outputs.changelog }}           
+         draft: false
+         prerelease: false
+
+#Commit updated changelog to branch.
+      - name: Commit updated CHANGELOG
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: ${{ github.event.release.target_commitish }}
+          commit_message: Update CHANGELOG with release v${{ github.event.inputs.releaseversion }}
+          file_pattern: CHANGELOG.md
