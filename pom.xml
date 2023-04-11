@@ -21,7 +21,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/vinodameta/package.git</developerConnection>
-    <tag>licencing-release-true</tag>
   </scm>
 
 
