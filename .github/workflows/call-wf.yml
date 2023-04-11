@@ -16,9 +16,9 @@ on:
 jobs:
   job1:
     uses: vinodameta/learning-github-actions/.github/workflows/reusable-wf.yml@main
-    with:
-      releaseVersion: ${{ github.event.inputs.releaseVersion }}
-      developmentVersion: ${{ github.event.inputs.developmentVersion }}
+#    with:
+#      releaseVersion: ${{ github.event.inputs.releaseVersion }}
+#      developmentVersion: ${{ github.event.inputs.developmentVersion }}
     secrets: inherit
 
   job2:
