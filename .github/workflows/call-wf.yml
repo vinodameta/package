@@ -5,7 +5,7 @@ on:
 
 jobs:
   job1:
-    uses: 
+    uses: vinodameta/reusable-wf/.github/workflows/reusable-wf.yml@reusable-wf
 
   job2:
     runs-on: ubuntu-latest
