@@ -28,7 +28,7 @@ jobs:
       - name: Get version from POM.XML
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion == ''
         run: |
-          echo "release=11.11.11)" >> >> $GITHUB_ENV
+          echo "release=11.11.11)" >> $GITHUB_ENV
 
 
 #Get releaseVersion v${{ github.event.inputs.releaseVersion }}" from Workflow Input
