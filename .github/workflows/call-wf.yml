@@ -18,7 +18,7 @@ jobs:
 #    with:
 #      releaseVersion: ${{ github.event.inputs.releaseVersion }}
 #      developmentVersion: ${{ github.event.inputs.developmentVersion }}
-#    secrets: inherit
+    secrets: inherit
 
   job2:
     runs-on: ubuntu-latest
