@@ -30,8 +30,8 @@ jobs:
         run: |
           if [ github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion == '' ]
           echo "release=10.10.10" >> "$GITHUB_OUTPUT"
-          else 
-          echo "you give an input"         
+#          else 
+#          echo "you give an input"         
 #          [ echo "release=${{ github.event.inputs.releaseVersion }}" >> "$GITHUB_OUTPUT" ]
 
 
