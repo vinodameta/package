@@ -28,17 +28,19 @@ jobs:
 
 #Get latest SNAPSHOT releaseVersion from POM.XML
       - name: Get version from POM.XML
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion == ''
         id: getVersion
         run: |
-          echo "release=1.1.1" >> "$GITHUB_OUTPUT"
+          if: github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion == ''
+          echo "release=10.10.10" >> "$GITHUB_OUTPUT"
+          else
+          echo "release=${{ github.event.inputs.releaseVersion }}" >> "$GITHUB_OUTPUT"
 
 #Get releaseVersion v${{ github.event.inputs.releaseVersion }}" from Workflow Input
-      - name: Get version from POM.XML
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion != ''
-        id: getVersion
-        run: |
-          echo "release=${{ github.event.inputs.releaseVersion }}" >> "$GITHUB_OUTPUT"
+#      - name: Get version from POM.XML
+#        if: github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion != ''
+#        id: getVersion
+#        run: |
+#          echo "release=${{ github.event.inputs.releaseVersion }}" >> "$GITHUB_OUTPUT"
           
           
 #Get releaseVersion v${{ github.event.inputs.releaseVersion }}" from Workflow Input
