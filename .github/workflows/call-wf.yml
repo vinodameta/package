@@ -14,7 +14,9 @@ on:
 
 jobs:
   job1:
-    uses: vinodameta/learning-github-actions/.github/workflows/reusable-wf.yml@main
+#    uses: vinodameta/learning-github-actions/.github/workflows/reusable-wf.yml@main
+    uses: vinodameta/package/.github/workflows/reusable-wf.yml@test
+
 #    with:
 #      releaseVersion: ${{ github.event.inputs.releaseVersion }}
 #      developmentVersion: ${{ github.event.inputs.developmentVersion }}
