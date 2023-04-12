@@ -32,6 +32,8 @@ jobs:
           echo "release=10.10.10" >> "$GITHUB_OUTPUT"
           else
           echo "release=${{ github.event.inputs.releaseVersion }}" >> "$GITHUB_OUTPUT"
+          fi
+
 
 #Get releaseVersion v${{ github.event.inputs.releaseVersion }}" from Workflow Input
 #      - name: Get version from POM.XML
