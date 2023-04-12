@@ -6,8 +6,7 @@ on:
     inputs:
       releaseVersion:
         description: "Default version to use when preparing a release."
-        required: true
-        default: "X.Y.Z"
+        required: false
       developmentVersion:
         description: "Default version to use for new local working copy."
         required: true
@@ -25,4 +24,24 @@ jobs:
     runs-on: ubuntu-latest
     needs: job1
     steps:
-      - run: echo done
+      - run: echo starting
+
+#Get latest SNAPSHOT releaseVersion from POM.XML
+      - name: Get version from POM.XML
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion == ''
+        id: getVersion
+        run: |
+          echo "release=1.1.1" >> "$GITHUB_OUTPUT"
+
+#Get releaseVersion v${{ github.event.inputs.releaseVersion }}" from Workflow Input
+      - name: Get version from POM.XML
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.releaseVersion != ''
+        id: getVersion
+        run: |
+          echo "release=${{ github.event.inputs.releaseVersion }}" >> "$GITHUB_OUTPUT"
+          
+          
+#Get releaseVersion v${{ github.event.inputs.releaseVersion }}" from Workflow Input
+      - name: Get version 
+        run: |
+          echo ${{ steps.getVersion.outputs.release }}    
